@@ -32,10 +32,10 @@
 - name: Reload sysctl | {{ inventory_hostname }} | {{ project_name }}
   command: /sbin/sysctl -a
 
-- name: Backup security limit configuration | {{ inventory_hostname }} | {{ project_name }}
-  copy: 
-    src: /etc/security/limits.conf
-    dest: /etc/security/limits.conf.orig
+#- name: Backup security limit configuration | {{ inventory_hostname }} | {{ project_name }}
+ # copy: 
+  #  src: /etc/security/limits.conf
+   # dest: /etc/security/limits.conf.orig
 
 - name: Update security limit configuration | {{ inventory_hostname }} | {{ project_name }}
   lineinfile:
