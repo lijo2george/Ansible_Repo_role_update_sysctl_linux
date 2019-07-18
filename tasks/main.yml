@@ -3,14 +3,14 @@
 - name: Backup sysctl file | {{ inventory_hostname }} | {{ project_name }}
   copy:
     src: /etc/sysctl.conf
-    dest: /etc/sysctl.conf.org
+    dest: /etc/sysctl.conf_ansible_bkp
     
 - name: Update Sysctl for Performance | {{ inventory_hostname }} | {{ project_name }}
   lineinfile:
     path: /etc/sysctl.conf
     line: "{{ item }}"
     state: present
-    backup: yes
+    #backup: yes
   register: sysctl.out
   with_items:
     - "# Settings for Oracle added by ansible"
@@ -32,10 +32,10 @@
 - name: Reload sysctl | {{ inventory_hostname }} | {{ project_name }}
   command: /sbin/sysctl -a
 
-#- name: Backup security limit configuration | {{ inventory_hostname }} | {{ project_name }}
- # copy: 
-  #  src: /etc/security/limits.conf
-   # dest: /etc/security/limits.conf.orig
+- name: Backup security limit configuration | {{ inventory_hostname }} | {{ project_name }}
+  copy: 
+    src: /etc/security/limits.conf
+    dest: /etc/security/limits.conf_ansible_bkp
 
 - name: Update security limit configuration | {{ inventory_hostname }} | {{ project_name }}
   lineinfile:
