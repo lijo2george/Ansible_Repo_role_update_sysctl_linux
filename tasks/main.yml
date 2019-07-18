@@ -48,7 +48,7 @@
     path: /etc/security/limits.conf
     line: "{{ item }}"
     state: present
-    backup: yes
+    #backup: yes
   register: sec_limit.out
   with_items:
     - "# Setting up limit by ansible"
