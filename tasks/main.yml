@@ -1,11 +1,11 @@
 ---
 
-- name: Backup sysctl file | {{ inventory_hostname }} | {{ project_name }}
+- name: Backup sysctl file
   copy:
     src: /etc/sysctl.conf
     dest: /etc/sysctl.conf_ansible_bkp
     
-- name: Update Sysctl for Performance | {{ inventory_hostname }} | {{ project_name }}
+- name: Update Sysctl for Performance
   lineinfile:
     path: /etc/sysctl.conf
     line: "{{ item }}"
@@ -26,24 +26,24 @@
     - "net.core.wmem_default = 262144"
     - "net.core.wmem_max = 1048576"
   
-- name: Reload sysctl | {{ inventory_hostname }} | {{ project_name }}
+- name: Reload sysctl
   command: /sbin/sysctl -p
 
-- name: Reload sysctl | {{ inventory_hostname }} | {{ project_name }}
+- name: Reload sysctl
   command: /sbin/sysctl -a
 
-- name: Backup security limit configuration | {{ inventory_hostname }} | {{ project_name }}
+- name: Backup security limit configuration
   copy: 
     src: /etc/security/limits.conf
     dest: /etc/security/limits.conf_ansible_bkp
 
-- name: Update security limit configuration | {{ inventory_hostname }} | {{ project_name }}
+- name: Update security limit configuration
   lineinfile:
     path: /etc/security/limits.conf
     regexp: '^# End of file'
     state: absent
 
-- name: Update security limit configuration | {{ inventory_hostname }} | {{ porject_name }}
+- name: Update security limit configuration
   lineinfile:
     path: /etc/security/limits.conf
     line: "{{ item }}"
