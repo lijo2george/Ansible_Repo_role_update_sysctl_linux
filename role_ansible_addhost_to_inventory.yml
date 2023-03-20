@@ -1,4 +1,4 @@
---
-- hosts: all 
+---
+- hosts: all
   roles:
-     - role_update_sysctl_linux
+     - role: role_update_sysctl_linux
