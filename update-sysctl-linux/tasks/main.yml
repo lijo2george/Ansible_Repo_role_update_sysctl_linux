@@ -11,7 +11,7 @@
     line: "{{ item }}"
     state: present
     #backup: yes
-  register: sysctl.out
+  register: sysctlout
   with_items:
   #  - "# Settings for Oracle added by ansible"
   #  - "fs.aio-max-nr = 1048576"
