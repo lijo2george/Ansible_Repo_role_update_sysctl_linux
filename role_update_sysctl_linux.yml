@@ -3,4 +3,4 @@
   become: yes
   
   roles:
-   - Ansible_Repo_role_update_sysctl_linux
+   - update-sysctl-linux
